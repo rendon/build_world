@@ -1,0 +1,167 @@
+{
+  "africa": {
+    "name": "Africa",
+    "names": [
+      "Афрыка",
+      "Àfrica",
+      "Afrika",
+      "Afrika",
+      "Afrika",
+      "Αφρική",
+      "África",
+      "Aafrika",
+      "Afrikka",
+      "L'afrique",
+      "Afrika",
+      "Africa",
+      "Afrika",
+      "Āfrika",
+      "Африка",
+      "Afrika",
+      "Afrika",
+      "África",
+      "Африка",
+      "Afrika",
+      "Afrika",
+      "Afrika",
+      "Afrika",
+      "Afrika",
+      "Африка"
+    ],
+    "countries": [
+
+    ]
+  },
+  "america": {
+    "name": "America",
+    "names": [
+      "Амерыка",
+      "Amèrica",
+      "Amerika",
+      "Amerika",
+      "Amerika",
+      "Αμερική",
+      "América",
+      "Ameerikas",
+      "Amerikka",
+      "Amérique",
+      "Amerika",
+      "America",
+      "Amerika",
+      "Amerika",
+      "Америка",
+      "Amerika",
+      "Amerika",
+      "América",
+      "Америка",
+      "Amerika",
+      "Amerika",
+      "Amerika",
+      "Amerika",
+      "Amerika",
+      "Америка"
+    ],
+    "countries": [
+
+    ]
+  },
+  "asia": {
+    "name": "Asia",
+    "names": [
+      "Азіі",
+      "Àsia",
+      "Asie",
+      "Asien",
+      "Asien",
+      "Ασία",
+      "Asia",
+      "Aasia",
+      "Aasiassa",
+      "Asie",
+      "Ázsia",
+      "Asia",
+      "Azija",
+      "Āzijā",
+      "Азија",
+      "Azië",
+      "Asia",
+      "Ásia",
+      "Азии",
+      "Ázia",
+      "Azija",
+      "Azi",
+      "Asien",
+      "Asya",
+      "Азії"
+    ],
+    "countries": [
+
+    ]
+  },
+  "europe": {
+    "name": "Europe",
+    "names": [
+      "Еўропа",
+      "Europa",
+      "Evropa",
+      "Europa",
+      "Europa",
+      "Ευρώπη",
+      "Europa",
+      "Euroopa",
+      "Eurooppa",
+      "L'Europe",
+      "Európa",
+      "Europa",
+      "Europa",
+      "Eiropa",
+      "Европа",
+      "Europa",
+      "Europa",
+      "Europa",
+      "Европа",
+      "Európa",
+      "Evropa",
+      "Evropë",
+      "Europa",
+      "Avrupa",
+      "Європа"
+    ],
+    "countries": [
+
+    ]
+  },
+  "oceania": {
+    "name": "Oceania",
+    "names": [
+      "Акіянія",
+      "Oceania",
+      "Oceánie",
+      "Oceanien",
+      "Ozeanien",
+      "Ωκεανία",
+      "Oceanía",
+      "Okeaania",
+      "Oceania",
+      "Océanie",
+      "Óceánia",
+      "Oceania",
+      "Okeanija",
+      "Okeānija",
+      "Океанија",
+      "Oceanië",
+      "Oceania",
+      "Oceania",
+      "Океания",
+      "Oceánia",
+      "Oceanija",
+      "Oqeania",
+      "Oceanien",
+      "Okyanusya",
+      "Океанія"
+    ],
+    "countries": [
+
+    ]
+  }
+}
