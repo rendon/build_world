@@ -1,5 +1,4 @@
 require "rest-client"
-require "levenshtein"
 
 KEY = ENV["YANDEX_TR_KEY"]
 
