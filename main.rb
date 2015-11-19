@@ -2,6 +2,7 @@
 require "json"
 require "csv"
 require "levenshtein"
+require "mongo"
 
 require_relative "lib/helpers"
 
@@ -51,5 +52,10 @@ continents.each do |k, v|
     c["cities"] = cities[code]
   end
 end
+#puts JSON.generate(continents)
+client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'world')
 
-puts JSON.generate(continents)
+continents.each do |k, v|
+  result = client[:world].insert_one(v)
+  puts result.n #=> returns 1, because 1 document was inserted.
+end
