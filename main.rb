@@ -2,7 +2,7 @@
 require "json"
 require "csv"
 require "levenshtein"
-require "mongo"
+require "sqlite3"
 
 require_relative "lib/helpers"
 
@@ -31,8 +31,6 @@ CONTINENTS_WITH_COUNTRIES.each do |k, v|
   end
 end
 
-#puts JSON.pretty_generate(continents)
-
 cities = {}
 File.readlines("data/world_cities.txt").each do |l|
   row = l.chomp.split(",")
@@ -52,10 +50,67 @@ continents.each do |k, v|
     c["cities"] = cities[code]
   end
 end
-#puts JSON.generate(continents)
-client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'world')
 
+# Open database
+db = SQLite3::Database.new "ccc.db"
+
+# Clean up
+rows = db.execute "DROP TABLE IF EXISTS continents"
+rows = db.execute <<-SQL
+  CREATE TABLE continents(
+    id        INTEGER PRIMARY KEY,
+    name      VARCHAR(200),
+    asciiname VARCHAR(200)
+  );
+SQL
+
+rows = db.execute "DROP TABLE IF EXISTS countries"
+rows = db.execute <<-SQL
+  CREATE TABLE countries(
+    id            INTEGER PRIMARY KEY,
+    name          VARCHAR(200),
+    asciiname     VARCHAR(200),
+    continent_id  INTEGER,
+    FOREIGN KEY(continent_id)  REFERENCES countries(id)
+  );
+SQL
+
+rows = db.execute "DROP TABLE IF EXISTS cities"
+rows = db.execute <<-SQL
+  CREATE TABLE cities(
+    id          INTEGER PRIMARY KEY,
+    name        VARCHAR(200),
+    asciiname   VARCHAR(200),
+    country_id  INTEGER,
+    FOREIGN KEY (country_id) REFERENCES countries(id)
+  )
+SQL
+
+country_count = 0
+city_count = 0
 continents.each do |k, v|
-  result = client[:world].insert_one(v)
-  puts result.n #=> returns 1, because 1 document was inserted.
+  db.execute "INSERT INTO continents(name, asciiname) values(?, ?)", k.to_s, "ascii version"
+  rows = db.execute "SELECT last_insert_rowid();"
+  continent_id = rows[0][0]
+  v["countries"].each do |c|
+    query = "INSERT INTO countries(name, asciiname, continent_id) VALUES (?, ?, ?)"
+    db.execute query, c["name"], "ascii version", continent_id
+    next if c["cities"].nil?
+    rows = db.execute "SELECT last_insert_rowid();"
+    country_id = rows[0][0]
+    db.execute "BEGIN TRANSACTION;"
+    c["cities"].each do |y|
+      query = "INSERT INTO cities(name, asciiname, country_id) VALUES (?, ?, ?)"
+      rows = db.execute query, y, "ascii version", country_id
+      city_count += 1
+      puts "cities inserted: #{city_count}"
+    end
+    db.execute "COMMIT;"
+    country_count += 1
+    puts "countries inserted: #{country_count}"
+  end
 end
+
+#db.execute("SELECT * FROM continents") do |row|
+#  puts row
+#end
