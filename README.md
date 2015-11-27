@@ -49,3 +49,6 @@ The result will look like this:
     america|Peru|PE|PER|paccollo
     america|Peru|PE|PER|paccopampa
     ...
+
+# Contributions
+I build this database because I needed it for a project, it's not complete, but it's good enough for my needs. Contributions to improve the database are welcome.
