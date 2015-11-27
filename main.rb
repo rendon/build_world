@@ -113,7 +113,3 @@ continents.each do |k, v|
     puts "countries inserted: #{country_count}"
   end
 end
-
-#db.execute("SELECT * FROM continents") do |row|
-#  puts row
-#end
